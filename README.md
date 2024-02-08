@@ -1,5 +1,6 @@
 # sparkplugb-printer
-Simple python program printing incoming sparkplugb messages in a human readable format. 
+
+Simple python program printing incoming sparkplugb messages in a human readable format. It decodes SparkplugB messages and prints it to the console. 
 
 usage: main.py [-h] [-host HOST] [-port PORT] [-topic TOPIC]  
 

@@ -6,9 +6,11 @@ import argparse
 parser = argparse.ArgumentParser(description="Sparkplug B MQTT client.")
 
 # Add the arguments
-parser.add_argument('-host', type=str, help='the mqtt host to connect to', default="localhost")
-parser.add_argument('-port', type=int, help='the mqtt port to connect to', default=1883)
-parser.add_argument('-topic', type=str, help='the topic to subscribe to', default="spBv1.0/#")
+parser.add_argument('-host', type=str, help='mqtt host to connect to', default="localhost")
+parser.add_argument('-port', type=int, help='mqtt port to connect to', default=1883)
+parser.add_argument('-username', type=str, help='mqtt username', default="")
+parser.add_argument('-password', type=str, help='mqtt password', default="")
+parser.add_argument('-topic', type=str, help='topic to subscribe to', default="spBv1.0/#")
 
 
 # Parse the arguments
@@ -34,6 +36,10 @@ def on_message(client, userdata, msg):
 
 # Create an MQTT client instance
 client = mqtt.Client()
+
+# Set username and password
+if args.username and args.username != "" and args.password and args.password != "":
+    client.username_pw_set(args.username, args.password)
 
 # Assign the on_connect and on_message callback functions
 client.on_connect = on_connect

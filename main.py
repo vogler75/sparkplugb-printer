@@ -19,7 +19,7 @@ args = parser.parse_args()
 # The callback for when the client receives a CONNACK response from the server.
 def on_connect(client, userdata, flags, rc):
     print("Connected with result code "+str(rc))
-    client.subscribe("spBv1.0/#")
+    client.subscribe(args.topic)
 
 
 # The callback for when a PUBLISH message is received from the server.
